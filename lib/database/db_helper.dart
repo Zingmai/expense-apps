@@ -52,4 +52,16 @@ class DBHelper{
     var myDB=await openDB();
     return myDB.insert(EXPENSE_TABLE, expense.toMap());
   }
+  Future<List<ExpenseModel>>fetchData()async{
+    var myDB=await openDB();
+    List<Map<String,dynamic>>data;
+    data=await myDB.query(EXPENSE_TABLE);
+
+    List<ExpenseModel> arrExpense=[];
+    for(Map<String,dynamic>expens in data){
+      ExpenseModel model=ExpenseModel.fromMap(expens);
+      arrExpense.add(model);
+    }
+    return arrExpense;
+  }
 }
