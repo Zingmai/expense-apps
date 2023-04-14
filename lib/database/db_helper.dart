@@ -1,3 +1,5 @@
+import 'package:expense/model/category_model.dart';
+import 'package:expense/model/expense_model.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -37,16 +39,17 @@ class DBHelper{
               '$CAT_COLUMN_ID interger primary key autoincrement,'
               '$CAT_COLUMN_TITLE text,'
               '$CAT_COLUMN_PATH text)');
-      db.insert(CAT_TABLE, {CAT_COLUMN_TITLE:"Fast-Food",CAT_COLUMN_PATH:'assets/images/expense_type/fast-food.png' });
+
+      db.insert(CAT_TABLE, CategoryModel(title: 'Fast-Food', img_path: 'assets/images/expense_type/fast-food.png').toMap());
       db.insert(CAT_TABLE, {CAT_COLUMN_TITLE:"Movies",CAT_COLUMN_PATH:'assets/images/expense_type/popcorn.png' });
       db.insert(CAT_TABLE, {CAT_COLUMN_TITLE:"Snacks",CAT_COLUMN_PATH:'assets/images/expense_type/snack.png' });
       db.insert(CAT_TABLE, {CAT_COLUMN_TITLE:"Travel",CAT_COLUMN_PATH:'assets/images/expense_type/travel.png' });
       db.insert(CAT_TABLE, {CAT_COLUMN_TITLE:"Coffee",CAT_COLUMN_PATH:'assets/images/expense_type/coffee.png' });
 
-
-
-
-    }
-    );
+    });
+  }
+  Future<int>addExpense(ExpenseModel expense) async{
+    var myDB=await openDB();
+    return myDB.insert(EXPENSE_TABLE, expense.toMap());
   }
 }
