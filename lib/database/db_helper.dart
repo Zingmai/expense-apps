@@ -52,7 +52,7 @@ class DBHelper{
     var myDB=await openDB();
     return myDB.insert(EXPENSE_TABLE, expense.toMap());
   }
-  Future<List<ExpenseModel>>fetchData()async{
+  Future<List<ExpenseModel>> fetchData() async{
     var myDB=await openDB();
     List<Map<String,dynamic>>dataExpenseType;
     dataExpenseType=await myDB.query(EXPENSE_TABLE);
@@ -64,7 +64,7 @@ class DBHelper{
     }
     return arrExpense;
   }
-  Future<List<CategoryModel>>fetchAllExpenseType()async{
+  Future<List<CategoryModel>> fetchAllExpenseType() async{
     var myDB=await openDB();
     List<Map<String,dynamic>>dataExpenseType;
     dataExpenseType=await myDB.query(CAT_TABLE);

@@ -11,6 +11,7 @@ part 'expense_type_state.dart';
 class ExpenseTypeBloc extends Bloc<ExpenseTypeEvent, ExpenseTypeState> {
   ExpenseTypeBloc() : super(ExpenseTypeInitialState()) {
     on<FetchExpenseTypeEvent>((event, emit) async {
+
       emit(ExpenseTypeLoadingState());
       var arrExpenseType = await DBHelper().fetchAllExpenseType();
       emit(ExpenseTypeLoadedState(arrExpenseType));
