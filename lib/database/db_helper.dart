@@ -54,14 +54,26 @@ class DBHelper{
   }
   Future<List<ExpenseModel>>fetchData()async{
     var myDB=await openDB();
-    List<Map<String,dynamic>>data;
-    data=await myDB.query(EXPENSE_TABLE);
+    List<Map<String,dynamic>>dataExpenseType;
+    dataExpenseType=await myDB.query(EXPENSE_TABLE);
 
     List<ExpenseModel> arrExpense=[];
-    for(Map<String,dynamic>expens in data){
-      ExpenseModel model=ExpenseModel.fromMap(expens);
+    for(Map<String,dynamic>expense in dataExpenseType){
+      ExpenseModel model=ExpenseModel.fromMap(expense);
       arrExpense.add(model);
     }
     return arrExpense;
+  }
+  Future<List<CategoryModel>>fetchAllExpenseType()async{
+    var myDB=await openDB();
+    List<Map<String,dynamic>>dataExpenseType;
+    dataExpenseType=await myDB.query(CAT_TABLE);
+
+    List<CategoryModel> arrExpenseType=[];
+    for(Map<String,dynamic>expenseType in dataExpenseType){
+      CategoryModel model=CategoryModel.fromMap(expenseType);
+      arrExpenseType.add(model);
+    }
+    return arrExpenseType;
   }
 }
