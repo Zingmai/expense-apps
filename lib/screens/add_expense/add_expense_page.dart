@@ -1,4 +1,4 @@
-import 'package:expense/bloc/cat_bloc_component/expense_type_bloc.dart';
+import 'package:expense/bloc/expense_type_bloc.dart';
 import 'package:expense/constants.dart';
 import 'package:flutter/material.dart';
 import '../../ui_helper/ui_helper.dart';
@@ -17,6 +17,11 @@ class _AddExpensePageState extends State<AddExpensePage> {
   var _selectedIndex = -1;
   var _selectedDate = DateTime.now();
   var isLight;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,15 +78,15 @@ class _AddExpensePageState extends State<AddExpensePage> {
                               ? MyColor.secondaryBColor
                               : MyColor.secondaryWColor,
                         ),
-                        enabledBorder: UnderlineInputBorder(
+                        enabledBorder: const UnderlineInputBorder(
                             borderSide:
                                 BorderSide(color: Colors.grey, width: 1)),
-                        focusedBorder: UnderlineInputBorder(
+                        focusedBorder: const UnderlineInputBorder(
                             borderSide:
                                 BorderSide(color: Colors.grey, width: 1))),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 TextField(
@@ -91,7 +96,7 @@ class _AddExpensePageState extends State<AddExpensePage> {
                           : MyColor.secondaryWColor),
                   controller: titleController,
                   keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       hintText: 'Add Title',
                       enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.grey, width: 1)),
@@ -99,7 +104,7 @@ class _AddExpensePageState extends State<AddExpensePage> {
                           borderSide:
                               BorderSide(color: Colors.grey, width: 1))),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 21,
                 ),
                 TextField(
@@ -109,7 +114,7 @@ class _AddExpensePageState extends State<AddExpensePage> {
                           : MyColor.secondaryWColor),
                   controller: descController,
                   keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       hintText: 'Add Desc',
                       enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.grey, width: 1)),
@@ -117,62 +122,60 @@ class _AddExpensePageState extends State<AddExpensePage> {
                           borderSide:
                               BorderSide(color: Colors.grey, width: 1))),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 21,
                 ),
                 SizedBox(
                     width: double.infinity,
                     height: 50,
-                    child:  OutlinedButton(
+                    child: OutlinedButton(
                             onPressed: () {
                               showModalBottomSheet(
                                   context: context,
-                                  shape: RoundedRectangleBorder(
+                                  shape: const RoundedRectangleBorder(
                                       borderRadius: BorderRadius.only(
                                           topRight: Radius.circular(15),
                                           topLeft: Radius.circular(15))),
                                   builder: (context) {
-                                    return Container(
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(21),
-                                        child: GridView.builder(
-                                          shrinkWrap: true,
-                                          itemCount:
-                                              Constants.arrImagePath.length,
-                                          gridDelegate:
-                                              SliverGridDelegateWithMaxCrossAxisExtent(
-                                            crossAxisSpacing: 11,
-                                            mainAxisSpacing: 11,
-                                            maxCrossAxisExtent: 50,
-                                          ),
-                                          itemBuilder: (context, index) {
-                                            return InkWell(
-                                                onTap: () {
-                                                  Navigator.pop(context);
-                                                  _selectedIndex = index;
-                                                  setState(() {});
-                                                },
-                                                child: _selectedIndex == index
-                                                    ? Container(
-                                                        padding:
-                                                            EdgeInsets.all(5),
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(15),
-                                                          border: Border.all(
-                                                              width: 1),
-                                                        ),
-                                                        child: Image.asset(
-                                                            Constants
-                                                                    .arrImagePath[
-                                                                index]),
-                                                      )
-                                                    : Image.asset(Constants
-                                                        .arrImagePath[index]));
-                                          },
+                                    return Padding(
+                                      padding: const EdgeInsets.all(21),
+                                      child: GridView.builder(
+                                        shrinkWrap: true,
+                                        itemCount:
+                                            Constants.arrImagePath.length,
+                                        gridDelegate:
+                                            const SliverGridDelegateWithMaxCrossAxisExtent(
+                                          crossAxisSpacing: 11,
+                                          mainAxisSpacing: 11,
+                                          maxCrossAxisExtent: 50,
                                         ),
+                                        itemBuilder: (context, index) {
+                                          return InkWell(
+                                              onTap: () {
+                                                Navigator.pop(context);
+                                                _selectedIndex = index;
+                                                setState(() {});
+                                              },
+                                              child: _selectedIndex == index
+                                                  ? Container(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              5),
+                                                      decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(15),
+                                                        border: Border.all(
+                                                            width: 1),
+                                                      ),
+                                                      child: Image.asset(
+                                                          Constants
+                                                                  .arrImagePath[
+                                                              index]),
+                                                    )
+                                                  : Image.asset(Constants
+                                                      .arrImagePath[index]));
+                                        },
                                       ),
                                     );
                                   });
@@ -201,10 +204,10 @@ class _AddExpensePageState extends State<AddExpensePage> {
                                             .arrImagePath[_selectedIndex]),
                                       )
                                     ],
-                                  )),
+                                  ))
 
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 InkWell(
