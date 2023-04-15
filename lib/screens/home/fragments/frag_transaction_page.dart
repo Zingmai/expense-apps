@@ -36,9 +36,9 @@ class FragTransactionPage extends StatelessWidget {
                         const EdgeInsets.only(right: 8.0, left: 10, top: 10),
                     child: InkWell(
                       onTap: () {
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => AddExpensePage(),));
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const AddExpensePage(),));
                       },
-                      child: CircleAvatar(
+                      child: const CircleAvatar(
                         radius: 16,
                         backgroundColor: Colors.black,
                         child: Icon(
@@ -126,7 +126,7 @@ class FragTransactionPage extends StatelessWidget {
             },
             itemCount: dayWiseTransaction['transactions'].length,
             shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
           )
         ],
       ),
@@ -135,7 +135,7 @@ class FragTransactionPage extends StatelessWidget {
 
   Widget mainChildTransactionItem(Map detailTransaction, BuildContext context) {
     return ListTile(
-      contentPadding: EdgeInsets.all(0),
+      contentPadding: const EdgeInsets.all(0),
       leading: Image.asset(detailTransaction['image'],
           width: MediaQuery.of(context).size.width * 0.08,
           height: MediaQuery.of(context).size.width * 0.08),

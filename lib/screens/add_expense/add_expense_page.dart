@@ -120,92 +120,84 @@ class _AddExpensePageState extends State<AddExpensePage> {
                           borderSide: BorderSide(color: Colors.grey, width: 1)),
                       focusedBorder: UnderlineInputBorder(
                           borderSide:
-                              BorderSide(color: Colors.grey, width: 1))),
-                ),
-                const SizedBox(
-                  height: 21,
-                ),
+                              BorderSide(color: Colors.grey, width: 1))),),
+                const SizedBox(height: 21,),
                 SizedBox(
                     width: double.infinity,
                     height: 50,
                     child: OutlinedButton(
-                            onPressed: () {
-                              showModalBottomSheet(
-                                  context: context,
-                                  shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.only(
-                                          topRight: Radius.circular(15),
-                                          topLeft: Radius.circular(15))),
-                                  builder: (context) {
-                                    return Padding(
-                                      padding: const EdgeInsets.all(21),
-                                      child: GridView.builder(
-                                        shrinkWrap: true,
-                                        itemCount:
-                                            Constants.arrImagePath.length,
-                                        gridDelegate:
-                                            const SliverGridDelegateWithMaxCrossAxisExtent(
-                                          crossAxisSpacing: 11,
-                                          mainAxisSpacing: 11,
-                                          maxCrossAxisExtent: 50,
-                                        ),
-                                        itemBuilder: (context, index) {
-                                          return InkWell(
-                                              onTap: () {
-                                                Navigator.pop(context);
-                                                _selectedIndex = index;
-                                                setState(() {});
-                                              },
-                                              child: _selectedIndex == index
-                                                  ? Container(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              5),
-                                                      decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(15),
-                                                        border: Border.all(
-                                                            width: 1),
-                                                      ),
-                                                      child: Image.asset(
-                                                          Constants
-                                                                  .arrImagePath[
-                                                              index]),
-                                                    )
-                                                  : Image.asset(Constants
-                                                      .arrImagePath[index]));
-                                        },
-                                      ),
-                                    );
-                                  });
-                            },
-                            child: _selectedIndex == -1
-                                ? Text(
-                                    'Select Expense Type',
+                        onPressed: () {
+                          showModalBottomSheet(
+                              context: context,
+                              shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.only(
+                                      topRight: Radius.circular(15),
+                                      topLeft: Radius.circular(15))),
+                              builder: (context) {
+                                return Padding(
+                                  padding: const EdgeInsets.all(21),
+                                  child: GridView.builder(
+                                    shrinkWrap: true,
+                                    itemCount: Constants.arrImagePath.length,
+                                    gridDelegate:
+                                        const SliverGridDelegateWithMaxCrossAxisExtent(
+                                      crossAxisSpacing: 11,
+                                      mainAxisSpacing: 11,
+                                      maxCrossAxisExtent: 50,
+                                    ),
+                                    itemBuilder: (context, index) {
+                                      return InkWell(
+                                          onTap: () {
+                                            Navigator.pop(context);
+                                            _selectedIndex = index;
+                                            setState(() {});
+                                          },
+                                          child: _selectedIndex == index
+                                              ? Container(
+                                                  padding:
+                                                      const EdgeInsets.all(5),
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            15),
+                                                    border:
+                                                        Border.all(width: 1),
+                                                  ),
+                                                  child: Image.asset(Constants
+                                                      .arrImagePath[index]),
+                                                )
+                                              : Image.asset(Constants
+                                                  .arrImagePath[index]));
+                                    },
+                                  ),
+                                );
+                              });
+                        },
+                        child: _selectedIndex == -1
+                            ? Text(
+                                'Select Expense Type',
+                                style: mTextStyle16(
+                                    mColor: isLight
+                                        ? MyColor.secondaryBColor
+                                        : MyColor.secondaryWColor),
+                              )
+                            : Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Selected',
                                     style: mTextStyle16(
                                         mColor: isLight
                                             ? MyColor.secondaryBColor
                                             : MyColor.secondaryWColor),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Image.asset(
+                                        Constants.arrImagePath[_selectedIndex]),
                                   )
-                                : Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'Selected',
-                                        style: mTextStyle16(
-                                            mColor: isLight
-                                                ? MyColor.secondaryBColor
-                                                : MyColor.secondaryWColor),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Image.asset(Constants
-                                            .arrImagePath[_selectedIndex]),
-                                      )
-                                    ],
-                                  ))
-
+                                ],
+                              ))
                 ),
                 const SizedBox(
                   height: 20,
