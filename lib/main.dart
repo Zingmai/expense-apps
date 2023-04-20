@@ -1,9 +1,17 @@
+
+import 'package:expense/bloc/expense_type_bloc.dart';
 import 'package:expense/screens/splash/splash_page.dart';
 import 'package:expense/ui_helper/ui_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiBlocProvider(
+    providers: [
+      BlocProvider(create: (context) => ExpenseTypeBloc(),),
+
+    ],
+      child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

@@ -1,10 +1,19 @@
-import 'package:expense/bloc/expense_type_bloc.dart';
-import 'package:expense/constants.dart';
+
+import 'package:expense/bloc/expense_component/expense_component_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../bloc/expense_type_bloc.dart';
+import '../../constants.dart';
+import '../../custom_widgets/custom_rounded_btn.dart';
+import '../../model/category_model.dart';
+import '../../model/expense_model.dart';
 import '../../ui_helper/ui_helper.dart';
 
 class AddExpensePage extends StatefulWidget {
-  const AddExpensePage({Key? key}) : super(key: key);
+  var balanceTillNow;
+  bool? isLight;
+  AddExpensePage({required this.balanceTillNow});
 
   @override
   State<AddExpensePage> createState() => _AddExpensePageState();
@@ -14,9 +23,19 @@ class _AddExpensePageState extends State<AddExpensePage> {
   var amtController = TextEditingController();
   var titleController = TextEditingController();
   var descController = TextEditingController();
+
   var _selectedIndex = -1;
+
   var _selectedDate = DateTime.now();
-  var isLight;
+
+  List<CategoryModel> arrExpenseType = [];
+
+  String defaultDropDownValue = 'Debit';
+
+  List<String> arrTransactionType = ['Debit', 'Credit'];
+
+  bool isAddingExpense = false;
+
 
   @override
   void initState() {
@@ -25,9 +44,8 @@ class _AddExpensePageState extends State<AddExpensePage> {
 
   @override
   Widget build(BuildContext context) {
-    isLight = Theme.of(context).brightness == Brightness.light;
+
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 21.0),
         child: Column(
@@ -42,19 +60,13 @@ class _AddExpensePageState extends State<AddExpensePage> {
                       },
                       child: Text(
                         'Cancel',
-                        style: mTextStyle16(
-                            mColor: isLight
-                                ? MyColor.secondaryBColor
-                                : MyColor.secondaryWColor),
+                        style: mTextStyle16(mColor: Colors.black),
                       )),
                   Center(
                       child: Text(
-                    'Expense',
-                    style: mTextStyle16(
-                        mColor: isLight
-                            ? MyColor.secondaryBColor
-                            : MyColor.secondaryWColor),
-                  ))
+                        'Expense',
+                        style: mTextStyle16(mColor: Colors.black),
+                      ))
                 ],
               ),
             ),

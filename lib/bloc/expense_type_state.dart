@@ -1,6 +1,6 @@
 part of 'expense_type_bloc.dart';
 
-@immutable
+
 abstract class ExpenseTypeState {}
 
 class ExpenseTypeInitialState extends ExpenseTypeState {}

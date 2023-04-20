@@ -36,7 +36,7 @@ class FragTransactionPage extends StatelessWidget {
                         const EdgeInsets.only(right: 8.0, left: 10, top: 10),
                     child: InkWell(
                       onTap: () {
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const AddExpensePage(),));
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>  AddExpensePage(balanceTillNow: 0.0),));
                       },
                       child: const CircleAvatar(
                         radius: 16,

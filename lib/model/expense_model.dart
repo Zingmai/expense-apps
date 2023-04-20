@@ -33,6 +33,7 @@ class ExpenseModel{
     DBHelper.EXPENSE_COLUMN_DESC:desc,
     DBHelper.EXPENSE_COLUMN_AMT:amt,
     DBHelper.EXPENSE_COLUMN_CAT_ID:cat_id,
+    DBHelper.EXPENSE_COLUMN_TYPE:type,
     DBHelper.EXPENSE_COLUMN_TIME:time,
 
   };
